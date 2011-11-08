@@ -358,7 +358,7 @@ var CREAM = ( function () {
 
 	var prepResults = function( incoming, stale_ok ) {
 		var result = {}
-		  , stale_ok = ( 'undefined' !== stale_ok && null !== stale_ok ) ? true : false;
+		  , stale_ok = ( 'undefined' !== stale_ok && null !== stale_ok ) ? stale_ok : false;
 
 		if( false === hasAttributes( incoming ) ) {
 			return incoming;
