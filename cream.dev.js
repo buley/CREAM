@@ -348,7 +348,7 @@ var CREAM = ( function () {
 		  , current_time = current_date.getTime()
 		  , timestamp = ( 'undefined' !== typeof request && null !== request && 'undefined' !== typeof request.timestamp ) ? request.timestamp : null;
 
-		if( 'undefined' === timestamp || null === timestamp) {
+		if( 'undefined' === typeof timestamp || null === timestamp) {
 			return false;
 		}
 		return ( timestamp < current_time ) ? false : true;
