@@ -81,7 +81,9 @@ var CREAM = ( function () {
 						result = res;
 					}
 				}
+				console.log('old key',key);
 				key = keys.join( '.' );
+				console.log('new key',key);
 			}
 			result = result[ key ];
 		} else {
@@ -384,7 +386,6 @@ var CREAM = ( function () {
 		   , key = ( 'undefined' !== typeof request && 'undefined' !== typeof request.key ) ? request.key : null
 		   , stale = isStale( data );
 		if( 'undefined' !== typeof data && null !== data ) {
-			console.log('removingMeta',data);
 			return removeMeta( data );
 		} else {
 			if( stale ) {
