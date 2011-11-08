@@ -373,8 +373,8 @@ var CREAM = ( function () {
 	var filterOutput = function( key, request ) {
 		var timestamp = ( 'undefined' !== typeof request && 'undefined' !== typeof request.timestamp ) ? parseInt( request.timestamp, 10 ) : 0
 		   , data = ( 'undefined' !== typeof request && 'undefined' !== typeof request.data ) ? request.data : null
-		   , key = ( 'undefined' !== typeof request && 'undefined' !== typeof request.key ) ? request.key : null;
-
+		   , key = ( 'undefined' !== typeof request && 'undefined' !== typeof request.key ) ? request.key : null
+		   , stale = isStale( data );
 		if( 'undefined' !== typeof data && null !== data ) {
 			return removeMeta( data );
 		} else {
