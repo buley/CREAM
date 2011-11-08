@@ -368,8 +368,8 @@ var CREAM = ( function () {
 			console.log('foreach attr',attr);
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
-				console.log('datatata',data);
-				if( false || !isStale( data ) ) {
+				console.log('datatata',isStale(data),data);
+				if( 1==1 || !isStale( data ) ) {
 					console.log('recursive',data);
 					result[ attr ] = ( 'undefined' !== typeof data.data ) ? removeMeta( data.data ) : data;
 				} 
