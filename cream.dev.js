@@ -398,15 +398,15 @@ var CREAM = ( function () {
 		}
 		var obj3 = {}
 		  , attr = '';
-		if ( false !== hasAttributes( obj2 ) ) {
-			console.log("RETURNING COO",obj2);
+		if ( false === hasAttributes( obj2 ) ) {
+			console.log("RETURNING COO",obj1);
 			return obj1;
 		}
-		if ( false !== hasAttributes( obj1 ) ) {
-			console.log("RETURNING COO1",obj1);
+		if ( false === hasAttributes( obj1 ) ) {
+			console.log("RETURNING COO1",obj2);
 			return obj2;
 		}
-
+		
 		for( attr in obj1 ) {
 			if( obj1.hasOwnProperty( attr ) ) {
 				var next = obj1[ attr ];
