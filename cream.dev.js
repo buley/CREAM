@@ -59,6 +59,7 @@ var CREAM = ( function () {
 		}
 		console.log('merging',cache,obj);
 		cache = mergeObjects( cache, obj );
+		console.log('cached',cache);
 		return this;
 	};
 
