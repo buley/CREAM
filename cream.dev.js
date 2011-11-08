@@ -363,7 +363,7 @@ var CREAM = ( function () {
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
 				if( !isStale( data ) ) {
-					console.log(' recursive',data);
+					console.log('recursive',data);
 					result[ attr ] = ( 'undefined' !== typeof data.data ) ? removeMeta( data.data ) : data;
 				} 
 			}
