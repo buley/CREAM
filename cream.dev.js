@@ -399,11 +399,11 @@ var CREAM = ( function () {
 		var obj3 = {}
 		  , attr = '';
 		if ( false === hasAttributes( obj2 ) ) {
-			console.log("RETURNING COO",obj1);
+			console.log("RETURNING obj1",obj1);
 			return obj1;
 		}
 		if ( false === hasAttributes( obj1 ) ) {
-			console.log("RETURNING COO1",obj2);
+			console.log("RETURNING obj2",obj2);
 			return obj2;
 		}
 		
