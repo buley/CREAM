@@ -358,6 +358,7 @@ var CREAM = ( function () {
 		var result = {};
 		console.log('removing meta. has attr?',hasAttributes(incoming),incoming);
 		if( false === hasAttributes( incoming ) ) {
+			console.log('removing meta',data);
 			return incoming;
 		}
 		for( attr in incoming ) {
