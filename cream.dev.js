@@ -363,9 +363,12 @@ var CREAM = ( function () {
 			console.log('removing meta',data);
 			return incoming;
 		}
+		console.log('foreaching throguh meta',incoming);
 		for( attr in incoming ) {
+			console.log('foreach attr',attr);
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
+				console.log('datatata',data);
 				if( !isStale( data ) ) {
 					console.log('recursive',data);
 					result[ attr ] = ( 'undefined' !== typeof data.data ) ? removeMeta( data.data ) : data;
@@ -399,7 +402,6 @@ var CREAM = ( function () {
 		}
 		var obj3 = {}
 		  , attr = '';
-		  /*
 		if ( false === hasAttributes( obj2 ) ) {
 			console.log("RETURNING obj1",obj1);
 			return mergeObjects( obj1 );
@@ -407,7 +409,7 @@ var CREAM = ( function () {
 		if ( false === hasAttributes( obj1 ) ) {
 			console.log("RETURNING obj2",obj2);
 			return mergeObjects( obj2 );
-		}*/	
+		}	
 		for( attr in obj1 ) {
 			if( obj1.hasOwnProperty( attr ) ) {
 				var next = obj1[ attr ];
