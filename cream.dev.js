@@ -70,6 +70,7 @@ var CREAM = ( function () {
 		  , res = {};
 		if( -1 !== key.indexOf( '.' ) ) {
 			result = cache;
+			console.log('cache',result);
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
