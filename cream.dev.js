@@ -351,7 +351,7 @@ var CREAM = ( function () {
 		if( 'undefined' === typeof timestamp || null === timestamp) {
 			return false;
 		}
-		return ( timestamp < current_time ) ? false : true;
+		return ( timestamp > current_time ) ? false : true;
 	}
 
 	var removeMeta = function( incoming ) {
