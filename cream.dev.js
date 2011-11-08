@@ -357,20 +357,25 @@ var CREAM = ( function () {
 	}
 
 	var prepResults = function( incoming, stale_ok ) {
+		
 		var result = {}
 		  , stale_ok = ( 'undefined' !== stale_ok && null !== stale_ok ) ? stale_ok : false;
 
 		if( false === hasAttributes( incoming ) ) {
 			return incoming;
 		}
+		
 		for( attr in incoming ) {
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
 				if( !isStale( data ) || true === stale_ok ) {
 					result[ attr ] = ( 'undefined' !== typeof data.data ) ? prepResults( data.data, stale_ok ) : data;
+				} else {
+					delete result[ attr ];
 				}
 			}
 		}
+
 		return result;
 	};
 
