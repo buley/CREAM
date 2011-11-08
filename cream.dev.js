@@ -65,15 +65,16 @@ var CREAM = ( function () {
 
 	self.prototype.get = function( request ) {
 		var key = request.key || null
-		  , result = {};
-		console.log('prototype.get',request);
+		  , result = {}
+		  , keys = []
+		  , res = {};
 		if( -1 !== key.indexOf( '.' ) ) {
 			result = cache;
 			while( key && -1 !== key.indexOf( '.' ) ) {
-				var keys = key.split( '.' );
+				keys = key.split( '.' );
 				key = keys.shift();
 				if( 'undefined' !== typeof result && 'undefined' !== typeof result.key ) {
-					var res = result[ key ];
+					res = result[ key ];
 					if( 'undefined' !== typeof res && res[ 'data' ] ) {
 						result = res[ 'data' ];
 					} else {
