@@ -301,7 +301,7 @@ var CREAM = ( function () {
 		return answer;
 	};
 
-	var preheat = function( incoming, ttl = null ) {
+	var preheat = function( incoming, ttl ) {
 	
 		if( 'undefined' === typeof incoming ) {
 			throw Error( 'The oven can\'t be empty.' );
