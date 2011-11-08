@@ -9,23 +9,24 @@ var CREAM = ( function () {
 		}
 	}
 	
-	self.prototype.set = function( request ) {
-	
+	self.prototype.set = function( request ) {	
 		var key = request.key || null
 		    , value = request.value || null
 		    , ttl = request.ttl || null //in seconds
 		    , current_date = new Date()
-		    , timestamp = ( current_date.getTime() + ( ttl * 1000 ) );
+		    , timestamp = ( current_date.getTime() + ( ttl * 1000 ) )
+		    , obj = {}
+		    , precount = 0
+		    , key = [];
 
 		if( 'function' === typeof value ) {
 			value = value()
 		}	
 
-		var obj = {};
 		if( -1 !== key.indexOf( '.' ) ) {
-			var precount = key.split('.').length;
+			precount = key.split('.').length;
 			while( key && -1 !== key.indexOf( '.' ) ) {
-				var keys = key.split( '.' );
+				keys = key.split( '.' );
 				new_obj = {};
 				key = keys.pop();
 				if( 'undefined' === typeof key ) {
@@ -51,7 +52,6 @@ var CREAM = ( function () {
 				, 'data': obj
 			};
 			obj = new_obj;
-
 		} else {
 			cache[ key ] = {
 				'timestamp': timestamp
@@ -60,7 +60,6 @@ var CREAM = ( function () {
 		}
 		cache = mergeObjects( cache, obj );
 		return this;
-
 	};
 
 	self.prototype.get = function( request ) {
@@ -70,7 +69,6 @@ var CREAM = ( function () {
 		  , res = {};
 		if( -1 !== key.indexOf( '.' ) ) {
 			result = cache;
-			console.log('cache',result);
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
