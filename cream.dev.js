@@ -356,23 +356,19 @@ var CREAM = ( function () {
 		return ( 0 !== timestamp && current_time > timestamp ) ? true : false;
 	}
 
-	var removeMeta = function( incoming ) {
-		var result = {};
-		console.log('removing meta. has attr?',hasAttributes(incoming),incoming);
+	var prepResults = function( incoming, stale_ok ) {
+		var result = {}
+		  , stale_ok = ( 'undefined' !== stale_ok && null !== stale_ok ) ? true : false;
+
 		if( false === hasAttributes( incoming ) ) {
-			console.log('removing meta',data);
 			return incoming;
 		}
-		console.log('foreaching throguh meta',incoming);
 		for( attr in incoming ) {
-			console.log('foreach attr',attr);
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
-				console.log('datatata',isStale(data),data);
-				if( !isStale( data ) ) {
-					console.log('recursive',data);
-					result[ attr ] = ( 'undefined' !== typeof data.data ) ? removeMeta( data.data ) : data;
-				} 
+				if( !isStale( data ) || true === stale_ok ) {
+					result[ attr ] = ( 'undefined' !== typeof data.data ) ? prepResults( data.data, stale_ok ) : data;
+				}
 			}
 		}
 		return result;
@@ -384,7 +380,7 @@ var CREAM = ( function () {
 		   , key = ( 'undefined' !== typeof request && 'undefined' !== typeof request.key ) ? request.key : null
 		   , stale = isStale( data );
 		if( 'undefined' !== typeof data && null !== data ) {
-			return removeMeta( data );
+			return prepResults( data );
 		} else {
 			if( stale ) {
 				self.prototype.delete( { 'key': key } );
