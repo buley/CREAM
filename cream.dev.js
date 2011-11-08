@@ -58,7 +58,6 @@ var CREAM = ( function () {
 				, 'data': obj
 			};
 		}
-		console.log('mergin',cache,'with',obj);
 		cache = mergeObjects( cache, obj );
 		return this;
 
@@ -353,7 +352,7 @@ var CREAM = ( function () {
 	var removeMeta = function( incoming ) {
 		var result = {};
 		console.log('removeMeta() incoming',incoming,incoming.constructor);
-		if( Object !== typeof incoming.constructor || 'string' === typeof incoming ) {
+		if( false !== typeof hasAttributes( incoming ) || 'string' === typeof incoming ) {
 			return incoming;
 		}
 		for( attr in incoming ) {
