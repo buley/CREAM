@@ -371,7 +371,7 @@ var CREAM = ( function () {
 	};
 
 	var filterOutput = function( key, request ) {
-		var timestamp = parseInt( request.timestamp, 10 ) || 0
+		var timestamp = ( 'undefined' !== typeof request && 'undefined' !== typeof request.timestamp ) ? 0 : parseInt( request.timestamp, 10 )
 		    , data = request.data || null
 		    , key = request.key || null;
 
