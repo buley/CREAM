@@ -73,17 +73,16 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				if( 'undefined' !== typeof result && 'undefined' !== typeof result.key ) {
+				if( 'undefined' !== typeof result && 'undefined' !== typeof result.key ) {	
 					res = result[ key ];
+					console.log('im sure theyre great people, but strange', res );
 					if( 'undefined' !== typeof res && res[ 'data' ] ) {
 						result = res[ 'data' ];
 					} else {
 						result = res;
 					}
 				}
-				console.log('old key',key);
 				key = keys.join( '.' );
-				console.log('new key',key);
 			}
 			result = result[ key ];
 		} else {
