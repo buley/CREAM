@@ -59,7 +59,7 @@ var CREAM = ( function () {
 		}
 		console.log('merging',cache,obj);
 		cache = mergeObjects( cache, obj );
-		console.log('cached',cache);
+		console.log('merged cached',cache);
 		return this;
 	};
 
@@ -399,15 +399,15 @@ var CREAM = ( function () {
 		}
 		var obj3 = {}
 		  , attr = '';
+		  /*
 		if ( false === hasAttributes( obj2 ) ) {
 			console.log("RETURNING obj1",obj1);
-			return obj1;
+			return mergeObjects( obj1 );
 		}
 		if ( false === hasAttributes( obj1 ) ) {
 			console.log("RETURNING obj2",obj2);
-			return obj2;
-		}
-		
+			return mergeObjects( obj2 );
+		}*/	
 		for( attr in obj1 ) {
 			if( obj1.hasOwnProperty( attr ) ) {
 				var next = obj1[ attr ];
