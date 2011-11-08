@@ -289,8 +289,11 @@ var CREAM = ( function () {
 
 	};
 
-	var hasAttributes = function() {
+	var hasAttributes = function( question ) {
 		var answer = false;
+		if( 'string' === typeof question ) {
+			return answer;
+		}
 		for( attr in question ) {
 			if( question.hasOwnPropery( answer ) ) {
 				answer = true;
@@ -352,7 +355,7 @@ var CREAM = ( function () {
 	var removeMeta = function( incoming ) {
 		var result = {};
 		console.log('removeMeta() incoming',incoming,incoming.constructor);
-		if( false !== typeof hasAttributes( incoming ) || 'string' === typeof incoming ) {
+		if( false !== hasAttributes( incoming ) ) {
 			return incoming;
 		}
 		for( attr in incoming ) {
