@@ -354,9 +354,7 @@ var CREAM = ( function () {
 
 	var removeMeta = function( incoming ) {
 		var result = {};
-		console.log('removeMeta() incoming',incoming,incoming.constructor);
 		if( false === hasAttributes( incoming ) ) {
-			console.log( 'returning SINGLE', incoming );
 			return incoming;
 		}
 		for( attr in incoming ) {
