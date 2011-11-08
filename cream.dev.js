@@ -64,8 +64,9 @@ var CREAM = ( function () {
 	};
 
 	self.prototype.get = function( request ) {
-		var key = request.key || null;
-		var result = {};
+		var key = request.key || null
+		  , result = {};
+		console.log('prototype.get',request);
 		if( -1 !== key.indexOf( '.' ) ) {
 			result = cache;
 			while( key && -1 !== key.indexOf( '.' ) ) {
