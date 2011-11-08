@@ -410,7 +410,7 @@ var CREAM = ( function () {
 		for( attr in obj1 ) {
 			if( obj1.hasOwnProperty( attr ) ) {
 				var next = obj1[ attr ];
-				if( 'undefined' !== typeof next && Object === next.constructor && 'string' !== typeof next ) {
+				if( 'undefined' !== typeof next && hasAttributes( next ) ) {
 					obj3[ attr ] = mergeObjects( obj3[ attr ], next );
 				} else {
 					obj3[ attr ] = next;
@@ -420,7 +420,7 @@ var CREAM = ( function () {
 		for( attr in obj2 ) {
 			if( obj2.hasOwnProperty( attr ) ) {
 				var next = obj2[ attr ];
-				if( 'undefined' !== typeof next && Object === next.constructor && 'string' !== typeof next ) {
+				if( 'undefined' !== typeof next && hasAttributes( next ) ) {
 					obj3[ attr ] = mergeObjects( obj3[ attr ], next );
 				} else {
 					obj3[ attr ] = next;
