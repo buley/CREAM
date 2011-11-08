@@ -26,6 +26,7 @@ var CREAM = ( function () {
 		if( -1 !== key.indexOf( '.' ) ) {
 			precount = key.split('.').length;
 			while( key && -1 !== key.indexOf( '.' ) ) {
+				console.log('cows outnumbered', key, precount, value);
 				keys = key.split( '.' );
 				new_obj = {};
 				key = keys.pop();
