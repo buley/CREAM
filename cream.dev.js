@@ -349,10 +349,10 @@ var CREAM = ( function () {
 		var current_date = new Date()
 		  , current_time = current_date.getTime()
 		  , timestamp = ( 'undefined' !== typeof request && null !== request && 'undefined' !== typeof request.timestamp ) ? request.timestamp : null;
-
 		if( 'undefined' === typeof timestamp || null === timestamp) {
 			return false;
 		}
+		console.log('TIMECOMPARE','old',timestamp,'new',current_time );
 		return ( 0 !== timestamp && current_time > timestamp ) ? true : false;
 	}
 
