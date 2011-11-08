@@ -346,7 +346,7 @@ var CREAM = ( function () {
 	var isStale = function( request ) {
 		var current_date = new Date()
 		  , current_time = current_date.getTime()
-		  , timestamp = request.timestamp;
+		  , timestamp = ( 'undefined' !== typeof request && 'undefined' !== typeof request.timestamp ) ? request.timestamp : null;
 
 		if( 'undefined' === timestamp || null === timestamp) {
 			return false;
