@@ -295,7 +295,7 @@ var CREAM = ( function () {
 			return answer;
 		}
 		for( attr in question ) {
-			if( question.hasOwnProperty( answer ) ) {
+			if( question.hasOwnProperty( attr ) ) {
 				answer = true;
 				break;
 			}
