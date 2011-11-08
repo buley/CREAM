@@ -71,11 +71,13 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				var keys = key.split( '.' );
 				key = keys.shift();
-				var res = result[ key ];
-				if( 'undefined' !== typeof res && res[ 'data' ] ) {
-					result = res[ 'data' ];
-				} else {
-					result = res;
+				if( 'undefined' !== typeof result && 'undefined' !== typeof result.key ) {
+					var res = result[ key ];
+					if( 'undefined' !== typeof res && res[ 'data' ] ) {
+						result = res[ 'data' ];
+					} else {
+						result = res;
+					}
 				}
 				key = keys.join( '.' );
 			}
