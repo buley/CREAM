@@ -59,7 +59,7 @@ var CREAM = ( function () {
 			};
 		}
 		console.log('mergin',cache,'with',obj);
-		cache = Public.prototype.utilities.merge( cache, obj );
+		cache = mergeObjects( cache, obj );
 		return this;
 
 	};
@@ -381,6 +381,47 @@ var CREAM = ( function () {
 			return null;
 		}
 	};
+
+	var mergeObjects = function( obj1, obj2 ) {
+		if( 'undefined' === typeof obj1 ) {
+			obj1 = {};
+		}
+		if( 'undefined' === typeof obj2 ) {
+			obj2 = {};
+		}
+		var obj3 = {}
+		  , attr = '';
+		if ( 'string' === typeof obj2 ) {
+			console.log("RETURNING COO",obj2);
+			return obj1;
+		}
+		if ( 'string' === typeof obj1 ) {
+			console.log("RETURNING COO1",obj1);
+			return obj2;
+		}
+
+		for( attr in obj1 ) {
+			if( obj1.hasOwnProperty( attr ) ) {
+				var next = obj1[ attr ];
+				if( 'undefined' !== typeof next && Object === next.constructor && 'string' !== typeof next ) {
+					obj3[ attr ] = mergeObjects( obj3[ attr ], next );
+				} else {
+					obj3[ attr ] = next;
+				}
+			}
+		}
+		for( attr in obj2 ) {
+			if( obj2.hasOwnProperty( attr ) ) {
+				var next = obj2[ attr ];
+				if( 'undefined' !== typeof next && Object === next.constructor && 'string' !== typeof next ) {
+					obj3[ attr ] = mergeObjects( obj3[ attr ], next );
+				} else {
+					obj3[ attr ] = next;
+				}
+			}
+		}
+		return obj3;
+	}
 
 	return self;
 
