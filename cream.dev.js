@@ -353,7 +353,7 @@ var CREAM = ( function () {
 		if( 'undefined' === typeof timestamp || null === timestamp) {
 			return false;
 		}
-		return ( timestamp > current_time ) ? false : true;
+		return ( 0 !== timestamp && current_time > timestamp ) ? true : false;
 	}
 
 	var removeMeta = function( incoming ) {
@@ -369,7 +369,7 @@ var CREAM = ( function () {
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
 				console.log('datatata',isStale(data),data);
-				if( 1==1 || !isStale( data ) ) {
+				if( !isStale( data ) ) {
 					console.log('recursive',data);
 					result[ attr ] = ( 'undefined' !== typeof data.data ) ? removeMeta( data.data ) : data;
 				} 
