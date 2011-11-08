@@ -75,7 +75,6 @@ var CREAM = ( function () {
 				key = keys.shift();
 				if( 'undefined' !== typeof result && 'undefined' !== typeof result.key ) {	
 					res = result[ key ];
-					console.log('im sure theyre great people, but strange', res );
 					if( 'undefined' !== typeof res && res[ 'data' ] ) {
 						result = res[ 'data' ];
 					} else {
@@ -370,7 +369,7 @@ var CREAM = ( function () {
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
 				console.log('datatata',data);
-				if( !isStale( data ) ) {
+				if( false || !isStale( data ) ) {
 					console.log('recursive',data);
 					result[ attr ] = ( 'undefined' !== typeof data.data ) ? removeMeta( data.data ) : data;
 				} 
