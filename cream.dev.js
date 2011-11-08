@@ -16,8 +16,7 @@ var CREAM = ( function () {
 		    , current_date = new Date()
 		    , timestamp = ( current_date.getTime() + ( ttl * 1000 ) )
 		    , obj = {}
-		    , precount = 0
-		    , key = [];
+		    , precount = 0;
 
 		if( 'function' === typeof value ) {
 			value = value()
