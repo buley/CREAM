@@ -10,6 +10,7 @@ var CREAM = ( function () {
 	}
 	
 	self.prototype.set = function( request ) {	
+
 		var key = request.key || null
 		    , value = request.value || null
 		    , ttl = request.ttl || null //in seconds
@@ -17,6 +18,9 @@ var CREAM = ( function () {
 		    , timestamp = ( current_date.getTime() + ( ttl * 1000 ) )
 		    , obj = {}
 		    , precount = 0;
+
+
+		console.log('setting',key,'value',value);
 
 		if( 'function' === typeof value ) {
 			value = value()
