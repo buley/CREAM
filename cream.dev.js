@@ -311,7 +311,7 @@ var CREAM = ( function () {
 		var answer = false
 		  , question_type = typeof question;
 
-		if( 'string' === question_type || 'number' === question_type ) {
+		if( 'undefined' === question_type || 'string' === question_type || 'number' === question_type ) {
 			return answer;
 		}
 
