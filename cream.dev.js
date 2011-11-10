@@ -67,6 +67,7 @@ var CREAM = ( function () {
 		  , item
 		  , keys = []
 		  , res = {};
+
 		if( -1 !== key.indexOf( '.' ) ) {
 			result = cache;
 			while( key && -1 !== key.indexOf( '.' ) ) {
@@ -93,23 +94,31 @@ var CREAM = ( function () {
 			}
 		}
 		return filterOutput( key, result );
-
 	};
 
 	self.prototype.delete = function( request ) {
+
 		var key = request.key || null
 		  , temp
 		  , keys = [];
+
 		if( -1 !== key.indexOf( '.' ) ) {
+
 			while( key && -1 !== key.indexOf( '.' ) ) {
+		
 				keys = key.split( '.' );
 				key = keys.shift();
 				cache = cache[ key ][ 'data' ];
 				key = keys.join( '.' );
+				
+				delete cache[ key ];
+		
 			}
-			delete cache[ key ];
+
 		} else {
+
 			delete cache[ key ];
+
 		}
 
 		return this;
@@ -384,18 +393,18 @@ var CREAM = ( function () {
 	};
 
 	var filterOutput = function( key, request ) {
+	
 		var timestamp = ( 'undefined' !== typeof request && 'undefined' !== typeof request.timestamp ) ? parseInt( request.timestamp, 10 ) : 0
-		   , data = ( 'undefined' !== typeof request && 'undefined' !== typeof request.data ) ? request.data : null
+		   , data = ( 'undefined' !== typeof request ) ? request.data : null
 		   , key = ( 'undefined' !== typeof request && 'undefined' !== typeof request.key ) ? request.key : null
 		   , stale = isStale( data );
-		if( 'undefined' !== typeof data && null !== data ) {
-			return prepResults( data );
-		} else {
-			if( stale ) {
-				self.prototype.delete( { 'key': key } );
-			}
-			return null;
+	
+		if( true === stale ) {
+			self.prototype.delete( { 'key': key } );
 		}
+
+		return prepResults( data );
+
 	};
 
 	var mergeObjects = function( obj1, obj2 ) {
