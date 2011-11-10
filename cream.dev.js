@@ -125,10 +125,12 @@ var CREAM = ( function () {
 		
 				keys = key.split( '.' );
 				key = keys.shift();
-				cache = cache[ key ][ 'data' ];
+				var cached = cached[ key ];
+				if( 'undefined' !== typeof cached && 'undefined' !== typeof cached.data ) {
+					delete cache[ key ];
+				}
 				key = keys.join( '.' );
-				
-				delete cache[ key ];
+
 		
 			}
 
