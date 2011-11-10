@@ -54,10 +54,12 @@ var CREAM = ( function () {
 			}
 			obj = new_obj;
 		} else {
-			cache[ key ] = {
-				'timestamp': timestamp
-				, 'data': obj
-			};
+			if( 'undefined' !== typeof key ) {
+				cache[ key ] = {
+					'timestamp': timestamp
+					, 'data': obj
+				};
+			}
 		}
 		cache = mergeObjects( cache, obj );
 		return this;
@@ -66,33 +68,34 @@ var CREAM = ( function () {
 	self.prototype.get = function( request ) {
 		var key = request.key || null
 		  , result
+		  , temp
 		  , item
 		  , keys = []
 		  , res = {};
 
 		if( -1 !== key.indexOf( '.' ) ) {
-			result = cache;
+			temp = cache;
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				if( 'undefined' !== typeof result && 'undefined' !== typeof result.key ) {	
-					res = result[ key ];
+				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp.key ) {	
+					res = temp[ key ];
 					if( 'undefined' !== typeof res && res[ 'data' ] ) {
-						result = res[ 'data' ];
+						temp = res[ 'data' ];
 					} else {
-						result = res;
+						temp = res;
 					}
 				}
 				key = keys.join( '.' );
 			}
-			item = result[ key ];
+			item = temp[ key ];
 			if( 'undefined' !== typeof item ) {
-				result = result[ key ];
+				result = item;
 			}
 		} else {
 			item = cache[ key ];
 			if( 'undefined' !== typeof item ) {
-				result = cache[ key ];
+				result = item;
 			}
 		}
 		console.log("CACHE",cache);
