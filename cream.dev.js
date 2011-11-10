@@ -393,8 +393,7 @@ var CREAM = ( function () {
 		if( 'undefined' === typeof timestamp || null === timestamp) {
 			return false;
 		}
-		console.log('TIMECOMPARE','old',timestamp,'new',current_time );
-		return ( 0 !== timestamp && current_time > timestamp ) ? true : false;
+		return ( 0 === timestamp && current_time < timestamp ) ? true : false;
 	}
 
 	var prepResults = function( incoming, stale_ok ) {
