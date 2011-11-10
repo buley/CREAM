@@ -317,11 +317,12 @@ var CREAM = ( function () {
 		console.log('has attrs?',question);
 		for( attr in question ) {
 			if( question.hasOwnProperty( attr ) ) {
+				console.log('has attr!',attr);
 				answer = true;
 				break;
 			}
 		}
-
+		console.log('returning answer',answer);
 		return answer;
 
 	};
