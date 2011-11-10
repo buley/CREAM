@@ -66,6 +66,7 @@ var CREAM = ( function () {
 	};
 
 	self.prototype.get = function( request ) {
+
 		var key = request.key || null
 		  , result
 		  , temp
@@ -75,6 +76,7 @@ var CREAM = ( function () {
 
 		if( -1 !== key.indexOf( '.' ) ) {
 			temp = cache;
+			console.log('cache temp',temp);
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
@@ -98,7 +100,6 @@ var CREAM = ( function () {
 				result = item;
 			}
 		}
-		console.log("CACHE",cache);
 		console.log("FILTERED",filterOutput( key, result ));
 		return filterOutput( key, result );
 	};
