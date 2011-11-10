@@ -70,6 +70,7 @@ var CREAM = ( function () {
 		var key = request.key || null
 		  , result
 		  , temp
+		  , temp_key
 		  , item
 		  , keys = []
 		  , res = {};
@@ -80,8 +81,11 @@ var CREAM = ( function () {
 				keys = key.split( '.' );
 				key = keys.shift();
 				console.log('key',key,'tempkey',temp[key]);
-				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp.key ) {	
-					res = temp[ key ];
+				console.log('buddy', 'undefined' !== typeof temp );
+				console.log('pal',
+				temp_key = temp[ key ];
+				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
+					res = temp_key;
 					console.log('RES',res);
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
 						temp = res[ 'data' ];
