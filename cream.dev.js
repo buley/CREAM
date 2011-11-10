@@ -82,7 +82,7 @@ var CREAM = ( function () {
 				key = keys.shift();
 				console.log('key',key,'tempkey',temp[key]);
 				console.log('buddy', 'undefined' !== typeof temp );
-				console.log('pal',
+				console.log('pal','undefined' !== typeof temp_key);
 				temp_key = temp[ key ];
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
 					res = temp_key;
