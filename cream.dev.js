@@ -79,7 +79,7 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				console.log('key',key,'temp',temp);
+				console.log('key',key,'tempkey',temp[key]);
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp.key ) {	
 					res = temp[ key ];
 					console.log('RES',res);
