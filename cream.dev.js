@@ -57,15 +57,14 @@ var CREAM = ( function () {
 				, 'data': obj
 			};
 		}
-		console.log('merging',cache,obj);
 		cache = mergeObjects( cache, obj );
-		console.log('merged cached',cache);
 		return this;
 	};
 
 	self.prototype.get = function( request ) {
 		var key = request.key || null
-		  , result = {}
+		  , result
+		  , item
 		  , keys = []
 		  , res = {};
 		if( -1 !== key.indexOf( '.' ) ) {
@@ -83,27 +82,32 @@ var CREAM = ( function () {
 				}
 				key = keys.join( '.' );
 			}
-			result = result[ key ];
+			item = result[ key ];
+			if( 'undefined' !== typeof item ) {
+				result = result[ key ];
+			}
 		} else {
-			result = cache[ key ];
+			item = cache[ key ];
+			if( 'undefined' !== typeof item ) {
+				result = cache[ key ];
+			}
 		}
 		return filterOutput( key, result );
 
 	};
 
 	self.prototype.delete = function( request ) {
-		var key = request.key || null;
-		var result = {};
+		var key = request.key || null
+		  , temp
+		  , keys = [];
 		if( -1 !== key.indexOf( '.' ) ) {
-			result = cache;
 			while( key && -1 !== key.indexOf( '.' ) ) {
-				var keys = key.split( '.' );
+				keys = key.split( '.' );
 				key = keys.shift();
-				result = result[ key ][ 'data' ];
+				cache = cache[ key ][ 'data' ];
 				key = keys.join( '.' );
 			}
-			delete result[ key ];
-			cache = result;
+			delete cache[ key ];
 		} else {
 			delete cache[ key ];
 		}
