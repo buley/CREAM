@@ -35,7 +35,7 @@ var CREAM = ( function () {
 				if( 'undefined' === typeof key ) {
 					break;
 				}
-				if( ( precount - 1 )=== keys.length ) {
+				if( ( precount - 1 ) === keys.length ) {
 					new_obj[ key ] = {
 						'timestamp': timestamp
 						, 'data': value
