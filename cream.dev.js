@@ -46,10 +46,12 @@ var CREAM = ( function () {
 				key = keys.join( '.' );
 			}
 			new_obj = {};
-			new_obj[ key ] = {
-				'timestamp': timestamp
-				, 'data': obj
-			};
+			if( 'undefined' !== typeof key ) {
+				new_obj[ key ] = {
+					'timestamp': timestamp
+					, 'data': obj
+				};
+			}
 			obj = new_obj;
 		} else {
 			cache[ key ] = {
