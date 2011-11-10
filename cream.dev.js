@@ -20,7 +20,7 @@ var CREAM = ( function () {
 		    , precount = 0;
 
 
-		console.log('setting',key,'value',value);
+		console.log('self.prototype.set key',key,'value',value);
 
 		if( 'function' === typeof value ) {
 			value = value()
