@@ -125,9 +125,13 @@ var CREAM = ( function () {
 		
 				keys = key.split( '.' );
 				key = keys.shift();
-				var cached = cached[ key ];
-				if( 'undefined' !== typeof cached && 'undefined' !== typeof cached.data ) {
-					delete cache[ key ];
+
+				if( 'undefined' !== typeof cached ) { 
+					var cached = cached[ key ];
+					if( 'undefined' !== typeof cached && 'undefined' !== typeof cached.data ) {
+						delete cache[ key ];
+					}
+
 				}
 				key = keys.join( '.' );
 
