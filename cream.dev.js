@@ -307,17 +307,23 @@ var CREAM = ( function () {
 	};
 
 	var hasAttributes = function( question ) {
+
 		var answer = false;
+
 		if( 'string' === typeof question ) {
 			return answer;
 		}
+
+		console.log('has attrs?',question);
 		for( attr in question ) {
 			if( question.hasOwnProperty( attr ) ) {
 				answer = true;
 				break;
 			}
 		}
+
 		return answer;
+
 	};
 
 	var preheat = function( incoming, ttl ) {
