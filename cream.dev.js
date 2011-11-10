@@ -79,6 +79,9 @@ var CREAM = ( function () {
 		  , keys = []
 		  , res = {};
 
+		if( 'undefined' === typeof key || null === key ) {
+			return;
+		}
 		console.log('self.prototype.get key', key ); 
 
 		if( -1 !== key.indexOf( '.' ) ) {
