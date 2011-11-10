@@ -80,7 +80,7 @@ var CREAM = ( function () {
 				key = keys.shift();
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp.key ) {	
 					res = temp[ key ];
-					if( 'undefined' !== typeof res && res[ 'data' ] ) {
+					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
 						temp = res[ 'data' ];
 					} else {
 						temp = res;
