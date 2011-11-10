@@ -79,6 +79,7 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
+				console.log('key',key);
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp.key ) {	
 					res = temp[ key ];
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
@@ -99,7 +100,6 @@ var CREAM = ( function () {
 				result = item;
 			}
 		}
-		console.log("FILTERED",key,result,filterOutput( key, result ));
 		return filterOutput( key, result );
 	};
 
