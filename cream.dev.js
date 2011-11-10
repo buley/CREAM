@@ -80,13 +80,9 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				console.log('key',key,'tempkey',temp[key]);
-				console.log('buddy', 'undefined' !== typeof temp );
-				console.log('pal','undefined' !== typeof temp_key);
 				temp_key = temp[ key ];
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
 					res = temp_key;
-					console.log('RES',res);
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
 						temp = res[ 'data' ];
 					} else {
