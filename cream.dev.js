@@ -93,6 +93,8 @@ var CREAM = ( function () {
 				result = cache[ key ];
 			}
 		}
+		console.log("CACHE",cache);
+		console.log("FILTERED",filterOutput( key, result ));
 		return filterOutput( key, result );
 	};
 
@@ -240,7 +242,7 @@ var CREAM = ( function () {
 			'timestamp': self.prototype.getExpires( { 'key': key } )
 			, 'data': value
 		};
-		console.log("CACHE",cache);
+
 		return this;
 
 	};
