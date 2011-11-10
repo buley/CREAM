@@ -308,22 +308,20 @@ var CREAM = ( function () {
 
 	var hasAttributes = function( question ) {
 
-		var answer = false
-		  , question_type = typeof question;
+		var question_type = typeof question;
 
 		if( 'undefined' === question_type || 'string' === question_type || 'number' === question_type ) {
-			return answer;
+			return false;
 		}
 
 		for( attr in question ) {
 			if( question.hasOwnProperty( attr ) ) {
-				console.log('has attr!',attr);
-				answer = true;
+				return true;
 				break;
 			}
 		}
 
-		return answer;
+		return false;
 
 	};
 
