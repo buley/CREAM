@@ -82,6 +82,7 @@ var CREAM = ( function () {
 				console.log('key',key,'temp',temp);
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp.key ) {	
 					res = temp[ key ];
+					console.log('RES',res);
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
 						temp = res[ 'data' ];
 					} else {
