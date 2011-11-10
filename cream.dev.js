@@ -71,7 +71,6 @@ var CREAM = ( function () {
 
 	self.prototype.get = function( request ) {
 
-		console.log('self.prototype.get key', key ); 
 		var key = request.key || null
 		  , result
 		  , temp
@@ -79,6 +78,8 @@ var CREAM = ( function () {
 		  , item
 		  , keys = []
 		  , res = {};
+
+		console.log('self.prototype.get key', key ); 
 
 		if( -1 !== key.indexOf( '.' ) ) {
 			temp = cache;
