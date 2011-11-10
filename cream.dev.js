@@ -315,16 +315,14 @@ var CREAM = ( function () {
 			return answer;
 		}
 
-		console.log('has attrs?',question);
 		for( attr in question ) {
-			console.log('has own',question.hasOwnProperty(attr),attr);
 			if( question.hasOwnProperty( attr ) ) {
 				console.log('has attr!',attr);
 				answer = true;
 				break;
 			}
 		}
-		console.log('returning answer',answer);
+
 		return answer;
 
 	};
