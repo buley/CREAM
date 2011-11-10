@@ -308,14 +308,16 @@ var CREAM = ( function () {
 
 	var hasAttributes = function( question ) {
 
-		var answer = false;
+		var answer = false
+		  , question_type = typeof question;
 
-		if( 'string' === typeof question ) {
+		if( 'string' === question_type || 'number' === question_type ) {
 			return answer;
 		}
 
 		console.log('has attrs?',question);
 		for( attr in question ) {
+			console.log('has own',question.hasOwnProperty(attr),attr);
 			if( question.hasOwnProperty( attr ) ) {
 				console.log('has attr!',attr);
 				answer = true;
