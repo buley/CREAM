@@ -71,6 +71,7 @@ var CREAM = ( function () {
 
 	self.prototype.get = function( request ) {
 
+		console.log('self.prototype.get key', key ); 
 		var key = request.key || null
 		  , result
 		  , temp
