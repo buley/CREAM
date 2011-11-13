@@ -3,9 +3,11 @@ var CREAM = ( function () {
 
 	var cache;
 	if( 'undefined' !== typeof localStorage ) {
-		cache = JSON.parse( localStorage.getItem('CREAM') );
-		if( 'undefined' === cache || null === cache ) {
+		cache = localStorage.getItem('CREAM');
+		if( 'undefined' === cache || null === cache || '' === cache ) {
 			cache = {};
+		} else {
+			cache = JSON.parse( cache );
 		}
 	} else {
 		cache = {};
