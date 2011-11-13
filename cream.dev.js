@@ -3,7 +3,10 @@ var CREAM = ( function () {
 
 	var cache;
 	if( 'undefined' !== typeof localStorage ) {
-		cache = localStorage.getItem('CREAM') || {};
+		cache = localStorage.getItem('CREAM');
+		if( 'undefined' === cache || null === cache ) {
+			cache = {};
+		}
 	} else {
 		cache = {};
 	}
