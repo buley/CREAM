@@ -1,7 +1,12 @@
 /* CREAM.dev.js */
 var CREAM = ( function () {
 
-	var cache = {};
+	var cache;
+	if( 'undefined' !== typeof localStorage ) {
+		cache = localStorage.getItem('CREAM');
+	} else {
+		cache = {};
+	}
 
 	var debug = false;
 
@@ -69,6 +74,11 @@ var CREAM = ( function () {
 			}
 		}
 		cache = mergeObjects( cache, obj );
+		
+		if( 'undefined' !== typeof localStorage ) {
+			localStorage.setItem( 'CREAM', cache );
+		}
+
 		return this;
 	};
 
