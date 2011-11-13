@@ -3,6 +3,8 @@ var CREAM = ( function () {
 
 	var cache = {};
 
+	var debug = false;
+
 	var self = function( cache ) {
 		if( cache ) {
 			this.cache = preheatCache( cache );
@@ -19,8 +21,9 @@ var CREAM = ( function () {
 		    , obj = {}
 		    , precount = 0;
 
-
-		console.log('self.prototype.set key',key,'value',value);
+		if( !!debug ) {
+			console.log('self.prototype.set key',key,'value',value);
+		}
 
 		if( 'function' === typeof value ) {
 			value = value()
@@ -82,7 +85,9 @@ var CREAM = ( function () {
 		if( 'undefined' === typeof key || null === key ) {
 			return;
 		}
-		console.log('self.prototype.get key', key ); 
+		if( !!debug ) {
+			console.log('self.prototype.get key', key ); 
+		}
 
 		if( -1 !== key.indexOf( '.' ) ) {
 			temp = cache;
