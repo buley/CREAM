@@ -3,7 +3,7 @@ var CREAM = ( function () {
 
 	var cache;
 	if( 'undefined' !== typeof localStorage ) {
-		cache = localStorage.getItem('CREAM');
+		cache = JSON.parse( localStorage.getItem('CREAM') );
 		if( 'undefined' === cache || null === cache ) {
 			cache = {};
 		}
@@ -79,7 +79,7 @@ var CREAM = ( function () {
 		cache = mergeObjects( cache, obj );
 		
 		if( 'undefined' !== typeof localStorage ) {
-			localStorage.setItem( 'CREAM', cache );
+			localStorage.setItem( 'CREAM', JSON.stringify( cache ) );
 		}
 
 		return this;
