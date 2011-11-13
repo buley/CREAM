@@ -443,7 +443,6 @@ var CREAM = ( function () {
 	
 		var timestamp = ( 'undefined' !== typeof request && 'undefined' !== typeof request.timestamp ) ? parseInt( request.timestamp, 10 ) : 0
 		   , data = ( 'undefined' !== typeof request ) ? request.data : null
-		   , key = ( 'undefined' !== typeof request && 'undefined' !== typeof request.key ) ? request.key : null
 		   , stale = isStale( data );
 	
 		if( true === stale ) {
