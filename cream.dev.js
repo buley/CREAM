@@ -23,7 +23,8 @@ var CREAM = ( function () {
 	
 	self.prototype.set = function( request ) {	
 
-		var key = request.key || null
+		//Prefix to help prevent namespace collisions
+		var key = '__' + request.key || null
 		    , value = request.value || null
 		    , ttl = request.ttl || null //in seconds
 		    , current_date = new Date()
@@ -429,7 +430,7 @@ var CREAM = ( function () {
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
 				if( !isStale( data ) || true === stale_ok ) {
-					result[ attr ] = ( 'undefined' !== typeof data.data ) ? prepResults( data.data, stale_ok ) : data;
+					result[ attr.replace(/^_{2}/, '') ] = ( 'undefined' !== typeof data.data ) ? prepResults( data.data, stale_ok ) : data;
 				} else {
 					delete result[ attr ];
 				}
