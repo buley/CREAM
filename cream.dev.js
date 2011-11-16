@@ -94,7 +94,7 @@ var CREAM = ( function () {
 		if( 'undefined' !== typeof localStorage ) {
 			localStorage.setItem( 'CREAM', JSON.stringify( cache ) );
 		}
-
+		console.log("CACHE",cache);
 		return this;
 	};
 
