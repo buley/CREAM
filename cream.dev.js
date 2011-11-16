@@ -49,7 +49,6 @@ var CREAM = ( function () {
 			}
 			value = new_value;
 		}
-		console.log("VALUEEEE",value);
 		if( -1 !== key.indexOf( '.' ) ) {
 			precount = key.split('.').length;
 			while( key && -1 !== key.indexOf( '.' ) ) {
@@ -83,7 +82,7 @@ var CREAM = ( function () {
 			obj = new_obj;
 		} else {
 			if( 'undefined' !== typeof key ) {
-				cache[ key ] = {
+				cache[ '__' + key ] = {
 					'timestamp': timestamp
 					, 'data': obj
 				};
@@ -94,7 +93,7 @@ var CREAM = ( function () {
 		if( 'undefined' !== typeof localStorage ) {
 			localStorage.setItem( 'CREAM', JSON.stringify( cache ) );
 		}
-		console.log("CACHE",cache);
+
 		return this;
 	};
 
@@ -121,7 +120,7 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				temp_key = '__' + temp[ key ];
+				temp_key = temp[ '__' + key ];
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
 					res = temp_key;
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
