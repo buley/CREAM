@@ -122,7 +122,7 @@ var CREAM = ( function () {
 				}
 				key = keys.join( '.' );
 			}
-			item = temp[ key ];
+			item = temp[ '__' + key ];
 			if( 'undefined' !== typeof item ) {
 				result = item;
 			}
