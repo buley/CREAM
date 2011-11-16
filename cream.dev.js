@@ -2,7 +2,7 @@
 var CREAM = ( function () {
 
 	var user_data_prefix = '$_' //dont use regex
-	  , user_data_prefix_regex = new RegExp( '^' + user_data_prefix.replace( /(\$\^)/g, '\\1' )
+	  , user_data_prefix_regex = new RegExp( '^' + user_data_prefix.replace( /(\$\^)/g, '\\1' ) )
 	  , cache;
 	if( 'undefined' !== typeof localStorage ) {
 		cache = localStorage.getItem('CREAM');
