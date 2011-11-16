@@ -101,6 +101,7 @@ var CREAM = ( function () {
 		if( 'undefined' === typeof key || null === key ) {
 			return;
 		}
+
 		if( !!debug ) {
 			console.log('self.prototype.get key', key ); 
 		}
