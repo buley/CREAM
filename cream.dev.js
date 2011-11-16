@@ -1,9 +1,9 @@
 /* CREAM.dev.js */
 var CREAM = ( function () {
 
-	var user_data_prefix = '$_';
-
-	var cache;
+	var user_data_prefix = '$_'
+	  , user_data_prefix_regex = new RegExp( '^' + user_data_prefix )
+	  , cache;
 	if( 'undefined' !== typeof localStorage ) {
 		cache = localStorage.getItem('CREAM');
 		if( 'undefined' === cache || null === cache || '' === cache ) {
@@ -443,7 +443,7 @@ var CREAM = ( function () {
 			if( incoming.hasOwnProperty( attr ) ) {
 				var data = incoming[ attr ];
 				if( !isStale( data ) || true === stale_ok ) {
-					result[ attr.replace(/^_{2}/, '') ] = ( 'undefined' !== typeof data.data ) ? prepResults( data.data, stale_ok ) : data;
+					result[ attr.replace( user_data_prefix_regex, '' ) ] = ( 'undefined' !== typeof data.data ) ? prepResults( data.data, stale_ok ) : data;
 				} else {
 					delete result[ attr ];
 				}
