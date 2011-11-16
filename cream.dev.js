@@ -131,6 +131,7 @@ var CREAM = ( function () {
 				result = item;
 			}
 		}
+		console.log("FILTER",key,result);
 		return filterOutput( key, result );
 	};
 
