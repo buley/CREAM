@@ -49,7 +49,7 @@ var CREAM = ( function () {
 			}
 			value = new_value;
 		}
-
+		console.log("VALUEEEE",value);
 		if( -1 !== key.indexOf( '.' ) ) {
 			precount = key.split('.').length;
 			while( key && -1 !== key.indexOf( '.' ) ) {
