@@ -42,7 +42,7 @@ var CREAM = ( function () {
 			value = value()
 		}
 		
-		if( Public.prototype.hasAttributes( value ) ) {
+		if( self.prototype.hasAttributes( value ) ) {
 			for( attr in value ) {
 				new_value[ '__' + attr ] = value[ attr ];
 
