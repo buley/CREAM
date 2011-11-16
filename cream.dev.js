@@ -1,8 +1,8 @@
 /* CREAM.dev.js */
 var CREAM = ( function () {
 
-	var user_data_prefix = '__' //dont use regex chars (e.g. $ or ^)
-	  , user_data_prefix_regex = new RegExp( '^' + user_data_prefix.replace( /(\$\^)/g, '\\$1' ) )
+	var user_data_prefix = '_$' //most regex chars are invalid but some are not (e.g. $)
+	  , user_data_prefix_regex = new RegExp( '^' + user_data_prefix.replace( /(\$)/g, '\\$1' ) )
 	  , cache;
 	if( 'undefined' !== typeof localStorage ) {
 		cache = localStorage.getItem('CREAM');
