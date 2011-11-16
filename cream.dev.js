@@ -90,7 +90,7 @@ var CREAM = ( function () {
 
 	self.prototype.get = function( request ) {
 
-		var key = request.key || null
+		var key = '__' + request.key || null
 		  , result
 		  , temp
 		  , temp_key
@@ -111,7 +111,7 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				temp_key = temp[ '__' + key ];
+				temp_key = temp[ key ];
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
 					res = temp_key;
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
@@ -122,12 +122,12 @@ var CREAM = ( function () {
 				}
 				key = keys.join( '.' );
 			}
-			item = temp[ '__' + key ];
+			item = temp[ key ];
 			if( 'undefined' !== typeof item ) {
 				result = item;
 			}
 		} else {
-			item = cache[ '__' + key ];
+			item = cache[ key ];
 			if( 'undefined' !== typeof item ) {
 				result = item;
 			}
