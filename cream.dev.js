@@ -30,7 +30,9 @@ var CREAM = ( function () {
 		    , current_date = new Date()
 		    , timestamp = ( current_date.getTime() + ( ttl * 1000 ) )
 		    , obj = {}
-		    , precount = 0;
+		    , precount = 0
+		    , attr
+		    , new_value = {};
 
 		if( !!debug ) {
 			console.log('self.prototype.set key',key,'value',value);
@@ -38,7 +40,15 @@ var CREAM = ( function () {
 
 		if( 'function' === typeof value ) {
 			value = value()
-		}	
+		}
+		
+		if( Public.prototype.hasAttributes( value ) ) {
+			for( attr in value ) {
+				new_value[ '__' + attr ] = value[ attr ];
+
+			}
+			value = new_value;
+		}
 
 		if( -1 !== key.indexOf( '.' ) ) {
 			precount = key.split('.').length;
