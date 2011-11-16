@@ -110,8 +110,8 @@ var CREAM = ( function () {
 			temp = cache;
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
-				key = '__' + keys.shift();
-				temp_key = temp[ key ];
+				key = keys.shift();
+				temp_key = '__' + temp[ key ];
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
 					res = temp_key;
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
