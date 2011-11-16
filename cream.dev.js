@@ -24,7 +24,7 @@ var CREAM = ( function () {
 	self.prototype.set = function( request ) {	
 
 		//Prefix to help prevent namespace collisions
-		var key = '__' + request.key || null
+		var key = request.key || null
 		    , value = request.value || null
 		    , ttl = request.ttl || null //in seconds
 		    , current_date = new Date()
@@ -60,12 +60,12 @@ var CREAM = ( function () {
 					break;
 				}
 				if( ( precount - 1 ) === keys.length ) {
-					new_obj[ key ] = {
+					new_obj[ '__' + key ] = {
 						'timestamp': timestamp
 						, 'data': value
 					};
 				} else {
-					new_obj[ key ] = {
+					new_obj[ '__' + key ] = {
 						'timestamp': timestamp
 						, 'data': obj
 					};
@@ -75,7 +75,7 @@ var CREAM = ( function () {
 			}
 			new_obj = {};
 			if( 'undefined' !== typeof key ) {
-				new_obj[ key ] = {
+				new_obj[ '__' + key ] = {
 					'timestamp': timestamp
 					, 'data': obj
 				};
