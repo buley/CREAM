@@ -1,6 +1,8 @@
 /* CREAM.dev.js */
 var CREAM = ( function () {
 
+	var user_data_prefix = '$_';
+
 	var cache;
 	if( 'undefined' !== typeof localStorage ) {
 		cache = localStorage.getItem('CREAM');
@@ -44,7 +46,7 @@ var CREAM = ( function () {
 		
 		if( hasAttributes( value ) ) {
 			for( attr in value ) {
-				new_value[ '__' + attr ] = value[ attr ];
+				new_value[ user_data_prefix + attr ] = value[ attr ];
 
 			}
 			value = new_value;
@@ -59,12 +61,12 @@ var CREAM = ( function () {
 					break;
 				}
 				if( ( precount - 1 ) === keys.length ) {
-					new_obj[ '__' + key ] = {
+					new_obj[ user_data_prefix + key ] = {
 						'timestamp': timestamp
 						, 'data': value
 					};
 				} else {
-					new_obj[ '__' + key ] = {
+					new_obj[ user_data_prefix + key ] = {
 						'timestamp': timestamp
 						, 'data': obj
 					};
@@ -74,7 +76,7 @@ var CREAM = ( function () {
 			}
 			new_obj = {};
 			if( 'undefined' !== typeof key ) {
-				new_obj[ '__' + key ] = {
+				new_obj[ user_data_prefix + key ] = {
 					'timestamp': timestamp
 					, 'data': obj
 				};
@@ -82,7 +84,7 @@ var CREAM = ( function () {
 			obj = new_obj;
 		} else {
 			if( 'undefined' !== typeof key ) {
-				cache[ '__' + key ] = {
+				cache[ user_data_prefix + key ] = {
 					'timestamp': timestamp
 					, 'data': obj
 				};
@@ -120,7 +122,7 @@ var CREAM = ( function () {
 			while( key && -1 !== key.indexOf( '.' ) ) {
 				keys = key.split( '.' );
 				key = keys.shift();
-				temp_key = temp[ '__' + key ];
+				temp_key = temp[ user_data_prefix + key ];
 				if( 'undefined' !== typeof temp && 'undefined' !== typeof temp_key ) {	
 					res = temp_key;
 					if( 'undefined' !== typeof res && 'undefined' !== typeof res[ 'data' ] ) {
@@ -131,12 +133,12 @@ var CREAM = ( function () {
 				}
 				key = keys.join( '.' );
 			}
-			item = temp[ '__' + key ];
+			item = temp[ user_data_prefix + key ];
 			if( 'undefined' !== typeof item ) {
 				result = item;
 			}
 		} else {
-			item = cache[ '__' + key ];
+			item = cache[ user_data_prefix + key ];
 			if( 'undefined' !== typeof item ) {
 				result = item;
 			}
