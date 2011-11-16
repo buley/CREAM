@@ -143,7 +143,6 @@ var CREAM = ( function () {
 				result = item;
 			}
 		}
-		console.log("FILTER",key,result);
 		return filterOutput( key, result );
 	};
 
@@ -161,9 +160,9 @@ var CREAM = ( function () {
 				key = keys.shift();
 
 				if( 'undefined' !== typeof cached ) { 
-					var cached = cached[ key ];
+					var cached = cached[ user_data_prefix + key ];
 					if( 'undefined' !== typeof cached && 'undefined' !== typeof cached.data ) {
-						delete cache[ key ];
+						delete cache[ user_data_prefix + key ];
 					}
 
 				}
@@ -394,13 +393,13 @@ var CREAM = ( function () {
 		  , item_timestamp = ( 0 === ttl ) ? 0 : current_date.getTime() + ttl;
 		
 		for( attr in incoming ) {
-			item = incoming[ attr ];
-			if( incoming.hasOwnProperty( attr ) ) {
+			item = incoming[ '__' + attr ];
+			if( incoming.hasOwnProperty( '__' + attr ) ) {
 				if( true === hasAttributes( item ) ) {
-					outgoing[ attr ] = preheat( incoming, ttl );	
+					outgoing[ '__' + attr ] = preheat( incoming, ttl );	
 				}	
 			} else {
-				outgoing[ attr ] = {
+				outgoing[ '__' + attr ] = {
 					'data': item
 					, 'timestamp': item_timestamp	
 				};
